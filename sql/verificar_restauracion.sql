@@ -1,7 +1,7 @@
 ---*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*---
--- Farmacia Comunitaria "Bienestar" - Verificacion de una restauracion
--- Ejecutar en la base original y en la restaurada y comparar resultados.
--- restore.ps1 lo hace automaticamente.
+-- Verificacion de una restauracion
+-- Ejecutar en la base original y en la restaurada y comparar resultados
+-- restore.ps1 lo hace automaticamente
 ---*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*---
 
 -- Filas por tabla (las particiones de bitacora se suman en la tabla padre)
