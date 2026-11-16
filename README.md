@@ -27,3 +27,15 @@ cubre:
 - Programa de fidelización con puntos
 - Promociones y descuentos
 - Estructura para facturación electrónica (DTE)
+
+
+## Pasos del proyecto
+ 
+1. **Análisis de requerimientos y diseño del modelo ER**
+2. **Implementación de la base de datos en PostgreSQL**: tablas, relaciones y restricciones.
+3. **Auditoría e índices**: bitácora automática, tablespaces e índices.
+4. **Datos de prueba**: al menos 10 registros por tabla.
+5. **Optimización de consultas**: pruebas con `EXPLAIN ANALYZE` antes y después de los índices.
+6. **Espacio en disco y mantenibilidad**: particionamiento, respaldos automáticos y restauración.
+7. **Seguridad**: roles y permisos, encriptación, monitoreo y alertas.
+8. **Informe final y presentación**.
