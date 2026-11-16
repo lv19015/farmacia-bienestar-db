@@ -1,2 +1,29 @@
-# farmacia-bienestar-db
-Base de datos PostgreSQL de la Farmacia Comunitaria “Bienestar”. Proyecto final de Administración de Bases de Datos.
+# Farmacia Comunitaria "Bienestar" - Base de datos PostgreSQL
+
+Proyecto final de **Administración de Bases de Datos**
+Universidad de El Salvador - Facultad Multidisciplinaria de Occidente
+Ingeniería en Desarrollo de Software / Educación en Línea - Ciclo II 2026
+
+**Grupo:** G05 - Escenario 1: Farmacia Comunitaria "Bienestar"
+
+## Integrantes
+
+| Carnet  | Integrante                              |
+|---------|-----------------------------------------|
+| AB25013 | Catherine Andrea Argumedo Barahona      |
+| HJ23002 | Paola Sugey Hércules Jirón              |
+| LV19015 | Brenda Ivania Laínez Vides              |
+| CC24073 | Christian Alejandro Contreras Chiquillo |
+
+## Descripción
+
+Diseño e implementación de la base de datos de una farmacia comunitaria, que
+cubre:
+
+- Productos, lotes y control de caducidad
+- Proveedores y compras
+- Ventas y reporte mensual de ventas
+- Recetas médicas y seguimiento de pacientes (incluye pacientes crónicos)
+- Programa de fidelización con puntos
+- Promociones y descuentos
+- Estructura para facturación electrónica (DTE)
