@@ -7,10 +7,11 @@
 -- TABLESPACES
 -- IMPORTANTE: las carpetas deben existir antes, estar vacias y pertenecer
 -- al usuario del sistema operativo que corre PostgreSQL (normalmente "postgres"). 
--- Ajustar las rutas segun el servidor
+-- Ajustar las rutas segun la ubicacion de las carpetas de cada integrante
+-- Ejecutar la creacion de cada TABLESPACE por separado antes de ejecutar todo el script
 -- ---------------------------------------------------------------------
-CREATE TABLESPACE ts_bitacora LOCATION '/var/lib/postgresql/ts/bitacora';
-CREATE TABLESPACE ts_indices  LOCATION '/var/lib/postgresql/ts/indices';
+CREATE TABLESPACE ts_bitacora LOCATION 'C:/pgdata/ts_bitacora';
+CREATE TABLESPACE ts_indices  LOCATION 'C:/pgdata/ts_indices';
 
 -- ---------------------------------------------------------------------
 -- BITACORA DE AUDITORIA
