@@ -39,3 +39,41 @@ cubre:
 6. **Espacio en disco y mantenibilidad**: particionamiento, respaldos automáticos y restauración.
 7. **Seguridad**: roles y permisos, encriptación, monitoreo y alertas.
 8. **Informe final y presentación**.
+
+## Mantenimiento y respaldos
+ 
+El paso 6 **(Espacio en disco y mantenibilidad)** se resuelve con scripts de SQL y de PowerShell y cada script se ejecuta en el siguiente orden:
+ 
+### Scripts SQL
+ 
+| Script | Función |
+|---|---|
+| `particionamiento.sql` | Convierte `bitacora` en una tabla particionada por mes (en `ts_bitacora`), con partición `DEFAULT` y funciones para crear particiones futuras y archivar las que superan 12 meses |
+| `mantenimiento.sql` | Ajusta autovacuum en las tablas con más movimiento, incluye `VACUUM`/`REINDEX` y consultas de monitoreo del espacio (por tabla, tablespace e índice) |
+| `verificar_restauracion.sql` | Conteo de filas por tabla para comparar la base original con la restaurada |
+ 
+### Scripts PowerShell
+ 
+| Script | Función |
+|---|---|
+| `backup.ps1` | Backup lógico con `pg_dump -Fc`, respaldo de roles y tablespaces (`pg_dumpall --globals-only`), validación del archivo, rotación a 14 días y log. La opción `-Fisico` agrega un backup físico con `pg_basebackup` |
+| `restore.ps1` | Restaura el último backup en una base de prueba y compara las filas con la original; `-SinTablespaces` permite restaurar en otro equipo |
+| `programar_backup.ps1` | Crea en el Programador de tareas de Windows el backup diario (02:00) y el mantenimiento semanal; `-CrearPgpass` guarda la contraseña para que los scripts no la pidan |
+| `mantenimiento_programado.ps1` | Tarea semanal: crea y archiva particiones de la bitácora y ejecuta `VACUUM (ANALYZE)` |
+
+
+### Cómo ejecutar
+ 
+Antes de ejecutar, las rutas de `CREATE TABLESPACE` en `indices_bitacora.sql` deben ser
+rutas de Windows con barras normales (por ejemplo `'C:/PostgreSQL/ts/bitacora'`), con las carpetas
+creadas y vacías.
+ 
+```powershell
+# PowerShell como administrador, en la carpeta de los scripts
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+ 
+.\programar_backup.ps1 -CrearPgpass                    # contraseña + tareas programadas
+Start-ScheduledTask -TaskName Farmacia_Backup_Diario   # prueba inmediata
+.\restore.ps1                                          # restauración de prueba y verificación
+```
+ 
